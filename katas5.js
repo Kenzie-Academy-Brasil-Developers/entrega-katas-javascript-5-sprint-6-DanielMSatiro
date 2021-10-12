@@ -128,3 +128,22 @@ const testCountValues2 = () => {
 const countValues = array => distinctValues(array).map((a)=>`${a}(${array.reduce((count,e)=>e===a?count+1:count,0)})`).join('')
 testCountValues1()
 testCountValues2()
+
+//KATAS 8
+
+const testEvaluateExpression1 = () => {
+    let result = evaluateExpression("a + b + c - d", {a: 1, b: 7, c: 3, d: 14});
+    let expected = -3
+    console.assert(result === expected, `esperado: ${expected}, obtido: ${result}`)
+ }
+
+ const testEvaluateExpression2 = () => {
+    let result = evaluateExpression("a * b - c * d", {a: 2, b: -3, c: 9, d: 25});
+    let expected = -231
+    console.assert(result === expected, `esperado: ${expected}, obtido: ${result}`)
+ }
+
+ const evaluateExpression = (expression,values) => eval(expression.split(' ').reduce((string,e)=>values.hasOwnProperty(e)?string+values[e]:string+e,""))
+
+ testEvaluateExpression1()
+ testEvaluateExpression2()
